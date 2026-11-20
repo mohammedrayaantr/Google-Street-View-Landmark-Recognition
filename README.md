@@ -149,7 +149,7 @@ Google_Street_View_Landmark_Recognition/
 **Step 1: Clone the repository**
 
 ```bash
-git clone https://github.com/USERNAME/Google-Street-View-Landmark-Recognition.git
+git clone https://github.com/mohammedrayaantr/Google-Street-View-Landmark-Recognition.git
 ```
 
 **Step 2: Navigate to the project directory**
