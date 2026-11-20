@@ -1,22 +1,24 @@
 # Google Street View Landmark Recognition
 
+A deep learning project that classifies landmark images into 10 categories using Transfer Learning and the MobileNetV2 architecture.
+
 ## 1. Project Overview
 
-This project focuses on developing a Landmark Recognition System using Deep Learning and Computer Vision techniques.
+This project implements a Landmark Recognition System using Deep Learning and Computer Vision.
 
-The system uses Transfer Learning with a pretrained MobileNetV2 Convolutional Neural Network (CNN) to extract visual features from images and classify them into their corresponding landmark categories.
+The system uses a pretrained MobileNetV2 Convolutional Neural Network (CNN) to extract visual features from landmark images and classify them into their corresponding categories.
 
-The model is trained to recognize 10 selected landmark categories using a subset of the Google Landmarks Dataset V2 (GLDv2).
+The model is trained on a subset of the Google Landmarks Dataset V2 (GLDv2), using 10 selected landmark categories.
 
 ## 2. Project Objectives
 
-- Load and explore a landmark image dataset.
-- Preprocess images for deep learning.
+- Explore and understand a landmark image dataset.
+- Perform image preprocessing and preparation.
 - Apply Transfer Learning using MobileNetV2.
 - Build and train a landmark classification model.
-- Evaluate model performance using accuracy, precision, recall, and F1-score.
-- Generate predictions for unseen landmark images.
-- Visualize training performance and classification results.
+- Evaluate the model using classification metrics.
+- Predict landmark categories from unseen images.
+- Visualize model performance and prediction results.
 
 ## 3. Dataset Description
 
@@ -26,17 +28,17 @@ The model is trained to recognize 10 selected landmark categories using a subset
 
 Dataset details:
 
-- Selected landmark categories: 10
+- Selected categories: 10
 - Total images collected: 300
 - Images per category: 30
-- Image dimensions: 224 × 224 pixels
-- Image channels: RGB
+- Image dimensions after preprocessing: 224 × 224 pixels
+- Image format: RGB
 
-The dataset is accessed through Hugging Face and streamed from a Parquet file.
+The dataset is streamed from a Parquet file hosted on Hugging Face.
 
-**Note:** The project uses a subset of GLDv2. The images have not been independently verified as exclusively Google Street View imagery.
+**Note:** This project uses a subset of GLDv2. The images have not been independently verified as exclusively Google Street View imagery.
 
-## 4. Technologies and Libraries Used
+## 4. Technologies Used
 
 - Python
 - TensorFlow
@@ -52,16 +54,16 @@ The dataset is accessed through Hugging Face and streamed from a Parquet file.
 
 ## 5. Model Architecture
 
-This project uses Transfer Learning with MobileNetV2 pretrained on the ImageNet dataset.
+The project uses Transfer Learning with MobileNetV2 pretrained on the ImageNet dataset.
 
-The original classification head is removed, and custom classification layers are added.
+The original classification layer is removed, and a custom classification head is added.
 
-**Architecture:**
+**Model architecture:**
 
 1. MobileNetV2 – Pretrained feature extraction.
-2. GlobalAveragePooling2D – Reduces extracted feature maps.
+2. GlobalAveragePooling2D – Reduces the extracted feature maps.
 3. Dense Layer – 128 neurons with ReLU activation.
-4. Dropout – 0.3 dropout rate to help reduce overfitting.
+4. Dropout – 0.3 dropout rate.
 5. Output Layer – 10 neurons with Softmax activation.
 
 The pretrained MobileNetV2 layers are frozen during training.
@@ -92,19 +94,22 @@ The model is compiled and trained using the following configuration:
 | Validation Images | 48 |
 | Testing Images | 60 |
 
-The training dataset is divided into training and validation subsets using an 80:20 validation split.
+The dataset is divided into training and testing sets using an 80:20 split. An additional 20% of the training data is used for validation during model training.
 
 ## 8. Model Evaluation
 
-The trained model is evaluated using the separate test dataset.
+The trained model is evaluated using a separate test dataset.
 
-**Reported test performance:**
+**Test Results:**
 
-- Test Accuracy: Approximately 83.33%
-- Test Images: 60
-- Correct Predictions: 50 out of 60
+| Metric | Result |
+|---|---|
+| Test Accuracy | 83.33% |
+| Total Test Images | 60 |
+| Correct Predictions | 50 |
+| Incorrect Predictions | 10 |
 
-The following evaluation techniques are used:
+The project uses the following evaluation techniques:
 
 - Accuracy
 - Precision
@@ -113,99 +118,81 @@ The following evaluation techniques are used:
 - Classification Report
 - Confusion Matrix
 
-## 9. Visualizations
+## 9. Results and Visualizations
 
 The project generates the following visualizations:
 
-- Sample landmark image visualization.
+- Sample landmark image.
 - Training and validation accuracy graph.
 - Training and validation loss graph.
 - Confusion matrix heatmap.
-- Individual landmark prediction with actual and predicted labels.
+- Landmark prediction showing actual and predicted labels.
+
+The generated result images are included in this repository.
 
 ## 10. Project Structure
 
 ```text
-Google_Street_View_Landmark_Recognition/
+Google-Street-View-Landmark-Recognition/
 │
 ├── Google_Street_View_Landmark_Recognition.ipynb
 ├── README.md
 ├── requirements.txt
 │
-├── models/
-│   ├── landmark_recognition.keras
-│   └── landmark_classes.json
+├── landmark_recognition.keras
+├── landmark_classes.json
 │
-├── results/
-│   ├── confusion_matrix.png
-│   ├── landmark_prediction.png
-│   └── training_validation_metrics.png
-│
-└── dataset/
+├── confusion_matrix.png
+├── landmark_prediction.png
+└── training_validation_metrics.png
 ```
 
 ## 11. Installation and Execution
 
-**Step 1: Clone the repository**
+### Step 1: Clone the repository
 
 ```bash
 git clone https://github.com/mohammedrayaantr/Google-Street-View-Landmark-Recognition.git
 ```
 
-**Step 2: Navigate to the project directory**
+### Step 2: Navigate to the project directory
 
 ```bash
 cd Google-Street-View-Landmark-Recognition
 ```
 
-**Step 3: Install the required libraries**
+### Step 3: Install the required libraries
 
 ```bash
 pip install -r requirements.txt
 ```
 
-**Step 4: Launch Jupyter Notebook**
+### Step 4: Launch Jupyter Notebook
 
 ```bash
 jupyter notebook
 ```
 
-**Step 5:** Open `Google_Street_View_Landmark_Recognition.ipynb` and execute the notebook cells in order.
+### Step 5: Run the notebook
 
-An active internet connection is required to stream the dataset from Hugging Face.
+Open `Google_Street_View_Landmark_Recognition.ipynb` and execute the cells in order.
+
+**Note:** An active internet connection is required to access the dataset from Hugging Face. TensorFlow and its dependencies must also be installed in a compatible Python environment.
 
 ## 12. Saved Model Files
 
-The trained model and its class labels are saved in the `models/` directory.
+The trained model and its class labels are included in the repository.
 
-- `landmark_recognition.keras` – Contains the trained neural network architecture and weights.
-- `landmark_classes.json` – Contains the selected landmark category names.
+- `landmark_recognition.keras` – Saved trained neural network model, including its architecture and weights.
+- `landmark_classes.json` – Contains the landmark category labels used by the model.
 
-The visual evaluation results are saved in the `results/` directory.
+The following result images are also included:
 
-## 13. Limitations
+- `confusion_matrix.png`
+- `landmark_prediction.png`
+- `training_validation_metrics.png`
+
+## 13. Project Limitations
 
 - The project uses a relatively small dataset of 300 images.
-- Only 10 selected landmark categories are supported.
-- The model shows signs of overfitting, with training accuracy higher than validation accuracy.
-- The dataset is not verified to contain exclusively Google Street View images.
-- Prediction confidence does not guarantee that a prediction is correct.
-
-## 14. Conclusion
-
-This project demonstrates the application of Deep Learning and Transfer Learning for landmark image classification.
-
-By using a pretrained MobileNetV2 model, the system learns visual features and classifies images into 10 selected landmark categories.
-
-The model achieved approximately 83.33% test accuracy on the selected test dataset.
-
-This project provided practical experience in image preprocessing, transfer learning, model training, evaluation, and computer vision.
-
-## 15. Future Improvements
-
-- Increase the number of landmark images.
-- Include more landmark categories.
-- Apply data augmentation to improve generalization.
-- Experiment with fine-tuning pretrained layers.
-- Improve model performance on unseen images.
-- Develop a web-based interface for landmark recognition.
+- Only 10 selected landmark categories
