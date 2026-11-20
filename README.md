@@ -130,6 +130,7 @@ The project generates the following visualizations:
 
 The generated result images are included in this repository.
 
+
 ## 10. Project Structure
 
 ```text
@@ -146,6 +147,7 @@ Google-Street-View-Landmark-Recognition/
 ├── landmark_prediction.png
 └── training_validation_metrics.png
 ```
+
 
 ## 11. Installation and Execution
 
@@ -179,18 +181,20 @@ Open `Google_Street_View_Landmark_Recognition.ipynb` and execute the cells in or
 
 **Note:** An active internet connection is required to access the dataset from Hugging Face. TensorFlow and its dependencies must also be installed in a compatible Python environment.
 
+
 ## 12. Saved Model Files
 
-The trained model and its class labels are included in the repository.
+The trained model and supporting files are included in the root directory of this repository.
 
 - `landmark_recognition.keras` – Saved trained neural network model, including its architecture and weights.
 - `landmark_classes.json` – Contains the landmark category labels used by the model.
 
-The following result images are also included:
+The following result visualizations are also included:
 
 - `confusion_matrix.png`
 - `landmark_prediction.png`
 - `training_validation_metrics.png`
+
 
 ## 13. Project Limitations
 
